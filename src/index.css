@@ -11,3 +11,35 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+* {
+  box-sizing: border-box;
+}
+
+/* .col-sm-3 h6, .col-sm-3 p {
+  display: none;
+} */
+
+button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  padding: 12px 24px;
+  background-color: #0e204d;
+  color: white;
+  display: none;
+}
+
+.col-sm-3:hover img {
+  filter: blur(4px);
+}
+
+/* .col-sm-3:hover h6, .col-sm-3:hover p {
+  display: block;
+} */
+
+.col-sm-3:hover button {
+  display: block;
+}
