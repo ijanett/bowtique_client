@@ -14,11 +14,36 @@ code {
 
 * {
   box-sizing: border-box;
+  color: #0e204d;
 }
 
 /* .col-sm-3 h6, .col-sm-3 p {
   display: none;
 } */
+
+.bwtq-filter-title, .bwtq-size-desc {
+  text-align: center
+}
+
+a {
+  padding: 10px 20px;
+  display: inline;
+  color: gray;
+  text-align: center;
+}
+
+a:hover {
+  color: #0e204d;
+}
+
+.chosen {
+  color: #0e204d;
+}
+
+.cart-icon {
+  font-size: 100%;
+  color: #0e204d;
+}
 
 button {
   position: absolute;
@@ -30,6 +55,42 @@ button {
   background-color: #0e204d;
   color: white;
   display: none;
+}
+
+.login-container form {
+  border: 2px solid #0e204d;
+  padding: 50px 24px;
+  width: 440px;
+  height: 260px;
+  margin: 0 auto;
+}
+
+.thumbnail {
+  position: relative;
+}
+
+.caption {
+  color: #0e204d;
+  position: absolute;
+  top: 2%;
+  left: 0;
+  width: 100%;
+}
+
+.caption img {
+  position: relative;
+  opacity: 0.8;
+}
+.caption button, input[type=submit] {
+  display: inline-block;
+  background-color: #0e204d;
+  color: white;
+  margin-top: -23%;
+}
+
+.caption button {
+  margin-top: 60%;
+  margin-left: 5px;
 }
 
 .col-sm-3:hover img {
