@@ -63,6 +63,12 @@ button {
   width: 440px;
   height: 260px;
   margin: 0 auto;
+  max-width: 90%;
+}
+
+.login-container input[type=submit] {
+  display: inline-block;
+  margin-top: 10%;
 }
 
 .thumbnail {
@@ -70,27 +76,27 @@ button {
 }
 
 .caption {
-  color: #0e204d;
   position: absolute;
+  color: #0e204d;
   top: 2%;
   left: 0;
   width: 100%;
+  height: 100%;
 }
 
 .caption img {
-  position: relative;
   opacity: 0.8;
+  max-width: 56%;
 }
+
 .caption button, input[type=submit] {
-  display: inline-block;
+  display: block;
   background-color: #0e204d;
   color: white;
-  margin-top: -23%;
 }
 
 .caption button {
-  margin-top: 60%;
-  margin-left: 5px;
+  margin-top: 12%;
 }
 
 .col-sm-3:hover img {

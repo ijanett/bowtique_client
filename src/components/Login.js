@@ -46,7 +46,6 @@ class Login extends React.Component {
                         <br />
                         PASSWORD: <input onChange={this.handleChange} type="password" name="password" vlaue={this.state.password}/>
                         <br />
-                        <br />
                         <input onClick={this.handleSubmit} type="submit" value="Login" />
                     </form>
                 </div>

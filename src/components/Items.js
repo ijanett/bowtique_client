@@ -18,7 +18,7 @@ class Items extends React.Component {
               <h5 align="center">{item.attributes.name}</h5>
               <h6 align="center">Size: {item.attributes.size}</h6>
               <p align="center">Price: ${item.attributes.price}.00</p>
-              <button type="button">ADD TO CART</button>
+              <button key={item.id} type="submit">ADD TO CART</button>
           </div>
         
         )
