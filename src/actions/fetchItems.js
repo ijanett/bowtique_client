@@ -5,7 +5,6 @@ export const fetchItems = () => {
     return (dispatch) => {
         console.log("FETCHING");
         
-        dispatch({type: 'LOADING_ITEMS'})
         fetch(ITEMS_URL)
             .then(res => res.json())
             .then(items => dispatch({ type: 'RENDER_ITEMS', items: items.data }))
