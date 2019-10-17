@@ -10,6 +10,7 @@ class Items extends React.Component {
     }
 
     render() {
+      console.log(this.props.items)
         const items = this.props.items.map(item => 
         
           <div className="col-sm-3" key={item.id}>
@@ -25,7 +26,14 @@ class Items extends React.Component {
       console.log(this.props.items)
     return (    
       <div className="container">
-        <div className="row">
+        <div className="bwtq-filter-title">
+          <h2>ALL BOW TIES</h2>
+        </div>
+        <div className="bwtq-size-desc">
+          <p>SM is better suited for small to medium dogs/cats</p>
+          <p>LG is better suited for medium to large dogs.</p>
+        </div>
+      <div className="row">
           {items}
         </div>
       </div>
@@ -39,7 +47,7 @@ class Items extends React.Component {
 // }
 
 const mapStateToProps = state => {
-  return { items: state.items }
+  return { items: state.itemsReducer.items }
 }
 
 export default connect(mapStateToProps, { fetchItems })(Items); 
