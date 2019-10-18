@@ -30,6 +30,7 @@ class Login extends React.Component {
         //3. Easiest way 
         //just pass it in as a destructeud object
         this.props.fetchUser(this.state)
+        this.props.history.push("/bowties")
     }
 
     render() {
