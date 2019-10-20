@@ -1,33 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchItems } from '../actions/fetchItems';
-import { addItemToCart } from '../actions/fetchUser';
+import Item from '../components/itemComponents/Item'
 
-class Items extends Component {
+class ItemsContainer extends Component {
     componentDidMount(){
         console.log("MOUNTING")
         this.props.fetchItems()
-    }
-
-    handleClick = (event) => {
-      event.preventDefault()
-      let user = this.props.currentUser
-      console.log(user)
-      // debugger
-      if(user === null) {
-        return (
-          window.alert("You must be logged in to add to cart!")
-        )
-      } else {
-        let carts = user.relationships.carts.data  
-        let cartId = carts[carts.length - 1].id
-        let itemId = event.target.id
-        let cartItem = {
-          cart_id: cartId,
-          item_id: itemId
-        }
-        this.props.addItemToCart(cartItem)
-      }
     }
 
     sizeFilter = (size) => {
@@ -43,17 +22,16 @@ class Items extends Component {
       }
     }
 
+    // searchFilter = () => {
+    //   return this.props.items.filter(item => {
+    //     return item.name.includes(this.props.search)
+    //   })
+    // }
+
     renderItems = () => {
-      if(this.sizeFilter() && this.props.filterItems) {
+      if(this.props.filterItems) {
         return this.sizeFilter(this.props.filter).map(item => 
-          <div className="col-sm-3" key={item.id}>
-              <img src={item.attributes.image} alt={item.attributes.name} className="img-fluid"></img> 
-              <h5 align="center">{item.attributes.name}</h5>
-              <h6 align="center">${item.attributes.price}.00</h6>
-              <h6 align="center">Size: {item.attributes.size}</h6>
-              <button id={item.id} onClick={this.handleClick} type="submit">ADD TO CART</button>
-          </div>
-        
+            <Item id={item.id} img={item.attributes.image} name={item.attributes.name} price={item.attributes.price} size={item.attributes.size} />
         )
       }
     }
@@ -77,10 +55,15 @@ class Items extends Component {
               <button type="button" onClick={this.props.filterItems} id="SMALL BOW TIES" value='SM' className="btn btn-secondary">SM</button>
               <button type="button" onClick={this.props.filterItems} id="LARGE BOW TIES" value='LG' className="btn btn-secondary">LG</button>
             </div>
+            {/*<div class="input-group">
+              <form>
+                <input type="text" onChange={this.props.udpateSearch} value={this.props.search} className="form-control" placeholder="Search bow ties" aria-describedby="btnGroupAddon2" />
+              </form>
+            </div>*/}
           </div>
 
           <div className="row">
-            {this.renderItems()}
+                {this.renderItems()}
           </div>
         </div>
         
@@ -94,7 +77,7 @@ class Items extends Component {
 // }
 
 const mapStateToProps = state => {
-  return { currentUser: state.userReducer.currentUser, items: state.itemsReducer.items }
+  return { items: state.itemsReducer.items }
 }
 
-export default connect(mapStateToProps, { fetchItems, addItemToCart })(Items); 
+export default connect(mapStateToProps, { fetchItems })(ItemsContainer); 
