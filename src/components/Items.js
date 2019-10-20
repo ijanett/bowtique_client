@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchItems } from '../actions/fetchItems';
+import { addItemToCart } from '../actions/fetchUser';
 
 class Items extends Component {
     componentDidMount(){
@@ -8,6 +9,26 @@ class Items extends Component {
         this.props.fetchItems()
     }
 
+    handleClick = (event) => {
+      event.preventDefault()
+      let user = this.props.currentUser
+      console.log(user)
+      // debugger
+      if(user === null) {
+        return (
+          window.alert("You must be logged in to add to cart!")
+        )
+      } else {
+        let carts = user.relationships.carts.data  
+        let cartId = carts[carts.length - 1].id
+        let itemId = event.target.id
+        let cartItem = {
+          cart_id: cartId,
+          item_id: itemId
+        }
+        this.props.addItemToCart(cartItem)
+      }
+    }
 
     sizeFilter = (size) => {
       switch(size) {
@@ -30,7 +51,7 @@ class Items extends Component {
               <h5 align="center">{item.attributes.name}</h5>
               <h6 align="center">${item.attributes.price}.00</h6>
               <h6 align="center">Size: {item.attributes.size}</h6>
-              <button key={item.id} type="submit">ADD TO CART</button>
+              <button id={item.id} onClick={this.handleClick} type="submit">ADD TO CART</button>
           </div>
         
         )
@@ -76,4 +97,4 @@ const mapStateToProps = state => {
   return { currentUser: state.userReducer.currentUser, items: state.itemsReducer.items }
 }
 
-export default connect(mapStateToProps, { fetchItems })(Items); 
+export default connect(mapStateToProps, { fetchItems, addItemToCart })(Items); 

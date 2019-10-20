@@ -1,13 +1,13 @@
 const itemsReducer = (state = {
-    items: [],
+    items: []
 }, action) => {
     switch (action.type) {
         case 'RENDER_ITEMS':
             return {
                 ...state,
-                items: [...action.items],
+                items: [...action.items]
             }
-        
+
         default:
             return state;
     }
