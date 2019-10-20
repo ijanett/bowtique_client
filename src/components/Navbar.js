@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 
 class Navbar extends React.Component {
     render() {
+        let carts = this.props.carts.flat()
+        // debugger
         return (
             <div className="navbar">
                 <NavLink to="/" className="navbar-logo"><img src={brandName} alt=""/></NavLink>
@@ -14,7 +16,7 @@ class Navbar extends React.Component {
                     
                     {this.props.currentUser !== null ? <NavLink to="/account" activeClassName="chosen">My Account</NavLink> : <NavLink to="/login" activeClassName="chosen">Login</NavLink> }
                     
-                    <NavLink to="/carts/new" className="cart-icon"><ion-icon name="cart"></ion-icon>(0)</NavLink>
+                    <NavLink to="/new-cart" className="cart-icon"><ion-icon name="cart"></ion-icon>{this.props.currentUser !== null ? `(${carts[carts.length - 1].attributes.items.length})` : '(0)'}</NavLink>
                 </div> 
             </div>
         )
@@ -23,7 +25,7 @@ class Navbar extends React.Component {
 }
 
 const mapStateToProps = state => {
-    return { currentUser: state.userReducer.currentUser}
+    return { currentUser: state.userReducer.currentUser, carts: state.userReducer.carts }
 }
 
 export default connect(mapStateToProps)(Navbar);
