@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  margin-bottom: 60px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
@@ -41,9 +42,15 @@ a:hover {
 }
 
 .cart-icon {
-  font-size: 100%;
+  /* font-size: 100%; */
   color: #0e204d;
 }
+
+/* .navbar-light {
+  justify-content: flex-start;
+  margin-left: 25px;
+  margin-right: 25px;
+} */
 
 button {
   position: absolute;
@@ -75,6 +82,11 @@ button {
   position: relative;
 }
 
+.thumbnail img {
+  max-width: 90%;
+
+}
+
 .caption {
   position: absolute;
   color: #0e204d;
@@ -86,7 +98,7 @@ button {
 
 .caption img {
   opacity: 0.8;
-  max-width: 56%;
+  max-width: 50%;
 }
 
 .caption button, input[type=submit] {
@@ -100,7 +112,7 @@ button {
 }
 
 .col-sm-3:hover img {
-  filter: blur(4px);
+  filter: blur(2px);
 }
 
 /* .col-sm-3:hover h6, .col-sm-3:hover p {
@@ -109,4 +121,22 @@ button {
 
 .col-sm-3:hover button {
   display: block;
+}
+
+.table {
+  width:70%; 
+  margin-left:15%; 
+  margin-right:15%;
+}
+
+.page-footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #091534;
+}
+
+.footer-copyright {
+  color: white;
 }
