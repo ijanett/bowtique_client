@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux'
+// import {connect} from 'react-redux'
 // import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
@@ -13,10 +13,21 @@ import Login from './components/Login';
 
 
 class App extends Component {
-  
+  state = {
+    filterTitle: 'ALL BOW TIES',
+    filter: ''
+  }
+
+  filterItems = (event) => {
+    event.persist()
+    this.setState(prevState => ({
+      ...prevState,
+      filterTitle: event.target.id,
+      filter: event.target.value
+    }))
+  }
   
   render() {
-    console.log(this.props);
     return (
       <Router>
       <Navbar />
@@ -24,7 +35,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
-          <Route path="/bowties" component={Items} />
+          <Route path="/bowties" render={(props) => <Items {...props} filterItems={this.filterItems} filter={this.state.filter} filterTitle={this.state.filterTitle} />} />
           <Route path="/account" component={User} />
         </Switch>
       </Router>
@@ -32,13 +43,13 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    user: state.userReducer.user
-  }
-}
+// const mapStateToProps = state => {
+//   return {
+//     user: state.userReducer.currentUser
+//   }
+// }
 
-export default connect(mapStateToProps)(App)
+export default App;
 
 
 //  {/* <div className="App">
