@@ -1,13 +1,19 @@
 const userReducer = (state = {
-    currentUser: null
+    currentUser: null,
+    carts: []
 }, action) => {
-
-    console.log(action);
     switch(action.type) {
         case 'LOGIN_USER':
             return {
                 ...state,
-                currentUser: action.user,
+                currentUser: action.user.data,
+                carts: [action.user.included]
+            }
+        case 'ADD_CART_ITEM':
+            return {
+                ...state,
+                currentUser: action.user.data,
+                carts: [action.user.included]
             }
         
         default:
