@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
-// import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
-import Header from './components/Header';
 import ItemsContainer from './containers/ItemsContainer';
 import User from './components/User';
 import Login from './components/Login';
@@ -33,7 +31,6 @@ class App extends Component {
     return (
       <Router>
       <Navbar currentUser={this.props.currentUser} carts={this.props.carts} />
-      <Header />
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
