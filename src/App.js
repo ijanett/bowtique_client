@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-// import {connect} from 'react-redux'
+import {connect} from 'react-redux'
 // import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Header from './components/Header';
-import Items from './components/Items';
+import ItemsContainer from './containers/ItemsContainer';
 import User from './components/User';
 import Login from './components/Login';
 import Footer from './components/Footer';
@@ -32,13 +32,13 @@ class App extends Component {
   render() {
     return (
       <Router>
-      <Navbar />
+      <Navbar currentUser={this.props.currentUser} carts={this.props.carts} />
       <Header />
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
-          <Route path="/bowties" render={(props) => <Items {...props} filterItems={this.filterItems} filter={this.state.filter} filterTitle={this.state.filterTitle} />} />
-          <Route path="/account" component={User} />
+          <Route path="/bowties" render={(props) => <ItemsContainer {...props} currentUser={this.props.currentUser} filterItems={this.filterItems} filter={this.state.filter} filterTitle={this.state.filterTitle} />} />
+          <Route path="/account" render={(props) => <User {...props} currentUser={this.props.currentUser} carts={this.props.carts} />} />
           <Route path="/new-cart" component={Cart} />
         </Switch>
       <Footer />
@@ -47,28 +47,11 @@ class App extends Component {
   }
 }
 
-// const mapStateToProps = state => {
-//   return {
-//     user: state.userReducer.currentUser
-//   }
-// }
+const mapStateToProps = state => {
+  return {
+    currentUser: state.userReducer.currentUser,
+    carts: state.userReducer.carts.flat()
+  }
+}
 
-export default App;
-
-
-//  {/* <div className="App">
-//     <header className="App-header">
-//       <img src={logo} className="App-logo" alt="logo" />
-//       <p>
-//         Edit <code>src/App.js</code> and save to reload.
-//       </p>
-//       <a
-//         className="App-link"
-//         href="https://reactjs.org"
-//         target="_blank"
-//         rel="noopener noreferrer"
-//       >
-//         Learn React
-//       </a>
-//     </header>
-//  </div> */}
+export default connect(mapStateToProps)(App);

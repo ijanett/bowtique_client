@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchItems } from '../actions/fetchItems';
-import Item from '../components/itemComponents/Item'
+import Item from '../components/Item'
 
 class ItemsContainer extends Component {
     componentDidMount(){
@@ -31,13 +31,14 @@ class ItemsContainer extends Component {
     renderItems = () => {
       if(this.props.filterItems) {
         return this.sizeFilter(this.props.filter).map(item => 
-            <Item id={item.id} img={item.attributes.image} name={item.attributes.name} price={item.attributes.price} size={item.attributes.size} />
+            <Item key={item.id} id={item.id} img={item.attributes.image} name={item.attributes.name} price={item.attributes.price} size={item.attributes.size} currentUser={this.props.currentUser} />
         )
       }
     }
 
     render() {
-      // console.log(this.props.filterItems)
+      window.scrollTo(0,0)
+
       return (    
         <div className="container">
           <div className="bwtq-filter-title">
