@@ -1,4 +1,5 @@
 const USERS_URL = "http://localhost:3000/users"
+const CART_ITEMS_URL = "http://localhost:3000/cart_items"
 
 //if you're using THUNK, your actionCreator will receive dispatch TWO TIMES
 //the MAIN PURPOSE OF THUNK IS TO PUT YOUR ASYNC LOGIC INTO YOUR ACTION CREATORS
@@ -20,7 +21,27 @@ export const fetchUser = (user) => {
         }
         fetch(USERS_URL, configObj)
             .then(res => res.json())
-            .then(user => dispatch({type: 'LOGIN_USER', user: user.data}))
-                
+            .then(user => 
+                fetch(USERS_URL + `/${user.data.id}`)
+                    .then(res => res.json())
+                    .then(user => dispatch({ type: 'LOGIN_USER', user }))
+            )
+            
+    }
+}
+
+export const addItemToCart = (cart_item) => {
+    return (dispatch) => {
+        const configObj = {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(cart_item)
+        }
+        fetch(CART_ITEMS_URL, configObj)
+            .then(res => res.json())
+            .then(user => dispatch({ type: 'ADD_CART_ITEM', user }))
     }
 }
