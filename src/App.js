@@ -9,6 +9,8 @@ import Header from './components/Header';
 import Items from './components/Items';
 import User from './components/User';
 import Login from './components/Login';
+import Footer from './components/Footer';
+import Cart from './components/Cart';
 
 
 
@@ -37,7 +39,9 @@ class App extends Component {
           <Route exact path="/login" component={Login} />
           <Route path="/bowties" render={(props) => <Items {...props} filterItems={this.filterItems} filter={this.state.filter} filterTitle={this.state.filterTitle} />} />
           <Route path="/account" component={User} />
+          <Route path="/new-cart" component={Cart} />
         </Switch>
+      <Footer />
       </Router>
     )
   }
