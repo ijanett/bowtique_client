@@ -13,7 +13,7 @@ class Item extends Component {
       if(user === null) {
         return (
           swal({
-            title: "Please log in to add to cart.", 
+            title: "Please log in to shop.", 
             icon: "info",
             timer: 1600
           })
