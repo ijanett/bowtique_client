@@ -1,4 +1,9 @@
+html {
+  height: 100%;
+}
+
 body {
+  height: 100%;
   margin: 0;
   margin-bottom: 60px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -18,40 +23,6 @@ code {
   color: #0e204d;
 }
 
-/* .col-sm-3 h6, .col-sm-3 p {
-  display: none;
-} */
-
-.bwtq-filter-title, .bwtq-size-desc {
-  text-align: center
-}
-
-a {
-  padding: 10px 20px;
-  display: inline;
-  color: gray;
-  text-align: center;
-}
-
-a:hover {
-  color: #0e204d;
-}
-
-.chosen {
-  color: #0e204d;
-}
-
-.cart-icon {
-  /* font-size: 100%; */
-  color: #0e204d;
-}
-
-/* .navbar-light {
-  justify-content: flex-start;
-  margin-left: 25px;
-  margin-right: 25px;
-} */
-
 button {
   position: absolute;
   top: 50%;
@@ -63,6 +34,130 @@ button {
   color: white;
   display: none;
 }
+
+/* nav links */
+.nav {
+  position: initial;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 56px;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.navbar-logo img {
+  width: 70%;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.navbar-list ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.navbar-list li {
+  padding: 0 0.5rem;
+}
+
+.cart-icon {
+  cursor: pointer;
+}
+
+ion-icon {
+  font-size: 130%;
+  color: gray;
+}
+
+.navbar ion-icon:hover,
+.chosen ion-icon {
+  color: #091534
+}
+
+/* Cart */
+
+.side-drawer {
+height: 100%;
+position: fixed;
+background: white;
+box-shadow: 2px 0px 5px #091534;
+top: 0;
+right: 0;
+width: 50%;
+max-width: 400px;
+z-index: 200;
+transform: translateX(100%);
+transition: transform 0.4s ease-out;
+}
+
+.cart-header{
+  background-color: #0e1629b3;
+  padding: 20px 20px;
+  text-align: center;
+}
+
+.cart-header .close-btn {
+  float: left;
+  cursor: pointer;
+}
+
+.cart-header h3, .cart-header .close-btn {
+  color: white;
+}
+
+.side-drawer.open {
+  transform: translateX(0);
+}
+
+.cart-login-prompt {
+  font-size: 110%;
+  text-align: center;
+  margin: 40px 20px;
+}
+
+.login-link {
+  padding: 1px 1px;
+}
+
+.side-drawer div.row {
+  margin: 20px 20px;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.3);
+  z-index: 100;
+}
+
+/* Cart items count */
+
+.badge {
+  background-color: #0e204d;
+  border-radius: 16px;
+  color: white;
+  display: inline-block;
+  font-size: 12px;
+  line-height: 1;
+  padding: 2px 6px;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+/* Login */
 
 .login-container form {
   border: 2px solid #0e204d;
@@ -78,13 +173,14 @@ button {
   margin-top: 10%;
 }
 
+/* HOME */
+
 .thumbnail {
   position: relative;
 }
 
 .thumbnail img {
   max-width: 90%;
-
 }
 
 .caption {
@@ -111,23 +207,33 @@ button {
   margin-top: 12%;
 }
 
+/* Bowties */
+
+.bwtq-filter-title, .bwtq-size-desc {
+  text-align: center
+}
+
 .col-sm-3:hover img {
   filter: blur(2px);
 }
 
-/* .col-sm-3:hover h6, .col-sm-3:hover p {
-  display: block;
-} */
-
 .col-sm-3:hover button {
   display: block;
 }
+
+.btn-light {
+  color: #0e204d
+}
+
+/* User */
 
 .table {
   width:70%; 
   margin-left:15%; 
   margin-right:15%;
 }
+
+/* Footer */
 
 .page-footer {
   position: fixed;
