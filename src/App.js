@@ -9,13 +9,21 @@ import User from './components/User';
 import Login from './components/Login';
 import Footer from './components/Footer';
 import Cart from './components/Cart';
+import Backdrop from './components/Backdrop';
 
 
 
 class App extends Component {
   state = {
     filterTitle: 'ALL BOW TIES',
-    filter: ''
+    filter: '',
+    cartVisible: false
+  }
+
+  cartToggleHandler = () => {
+    this.setState((prevState) => {
+      return {cartVisible: !prevState.cartVisible}
+    })
   }
 
   filterItems = (event) => {
@@ -28,17 +36,28 @@ class App extends Component {
   }
   
   render() {
+    let backdrop;
+
+    if(this.state.cartVisible) {
+      backdrop = <Backdrop closeCart={this.cartToggleHandler} />
+    }
+
     return (
       <Router>
-      <Navbar currentUser={this.props.currentUser} carts={this.props.carts} />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/login" component={Login} />
-          <Route path="/bowties" render={(props) => <ItemsContainer {...props} currentUser={this.props.currentUser} filterItems={this.filterItems} filter={this.state.filter} filterTitle={this.state.filterTitle} />} />
-          <Route path="/account" render={(props) => <User {...props} currentUser={this.props.currentUser} carts={this.props.carts} />} />
-          <Route path="/new-cart" component={Cart} />
-        </Switch>
-      <Footer />
+          <div style={{height: '100%'}}>
+            <Navbar cartToggle={this.cartToggleHandler} currentUser={this.props.currentUser} carts={this.props.carts} openCart={this.w3_open} />
+            <Cart visible={this.state.cartVisible} close={this.cartToggleHandler} currentUser={this.props.currentUser} carts={this.props.carts} />
+              {backdrop}
+              <main style={{marginTop: '34px'}}>
+                <Switch>
+                  <Route exact path="/" component={Home} />
+                  <Route exact path="/login" component={Login} />
+                  <Route path="/bowties" render={(props) => <ItemsContainer {...props} currentUser={this.props.currentUser} filterItems={this.filterItems} filter={this.state.filter} filterTitle={this.state.filterTitle} />} />
+                  <Route path="/account" render={(props) => <User {...props} currentUser={this.props.currentUser} carts={this.props.carts} />} />
+                </Switch>
+              </main>
+            <Footer />
+          </div>
       </Router>
     )
   }
