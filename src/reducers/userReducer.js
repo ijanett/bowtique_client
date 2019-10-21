@@ -15,6 +15,13 @@ const userReducer = (state = {
                 currentUser: action.user.data,
                 carts: [action.user.included]
             }
+
+        case 'DELETE_CART_ITEM':
+            return {
+                ...state,
+                currentUser: action.user.data,
+                carts: [action.user.included]
+            }
         
         default:
             return state;
