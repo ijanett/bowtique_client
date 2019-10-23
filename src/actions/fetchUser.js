@@ -45,3 +45,19 @@ export const addItemToCart = (cart_item) => {
             .then(user => dispatch({ type: 'ADD_CART_ITEM', user }))
     }
 }
+
+export const deleteCartItem = (cartItem) => {
+    return (dispatch) => {
+        const configObj = {
+            method: 'DELETE',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(cartItem)
+        }
+        fetch(CART_ITEMS_URL + `/${cartItem.id}`, configObj)
+            .then(res => res.json())
+            .then(user => dispatch({ type: 'DELETE_CART_ITEM', user }))
+    }
+}
