@@ -8,10 +8,8 @@ import ItemsContainer from './containers/ItemsContainer';
 import User from './components/User';
 import Login from './components/Login';
 import Footer from './components/Footer';
-import Cart from './components/Cart';
+import Cart from './components/CartContainer';
 import Backdrop from './components/Backdrop';
-
-
 
 class App extends Component {
   state = {
@@ -46,7 +44,7 @@ class App extends Component {
       <Router>
           <div style={{height: '100%'}}>
             <Navbar cartToggle={this.cartToggleHandler} currentUser={this.props.currentUser} carts={this.props.carts} openCart={this.w3_open} />
-            <Cart visible={this.state.cartVisible} close={this.cartToggleHandler} currentUser={this.props.currentUser} carts={this.props.carts} />
+            <Cart visible={this.state.cartVisible} close={this.cartToggleHandler} />
               {backdrop}
               <main style={{marginTop: '34px'}}>
                 <Switch>

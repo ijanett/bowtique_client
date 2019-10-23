@@ -38,7 +38,7 @@ class ItemsContainer extends Component {
 
     render() {
       window.scrollTo(0,0)
-
+      
       return (    
         <div className="container">
           <div className="bwtq-filter-title">
@@ -52,9 +52,9 @@ class ItemsContainer extends Component {
           <div className="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
             <div className="btn-group" role="group" aria-label="First group">
             Filter by size:
-              <button type="button" onClick={this.props.filterItems} id="ALL BOW TIES" value='ALL' className="btn btn-secondary">ALL</button>
-              <button type="button" onClick={this.props.filterItems} id="SMALL BOW TIES" value='SM' className="btn btn-secondary">SM</button>
-              <button type="button" onClick={this.props.filterItems} id="LARGE BOW TIES" value='LG' className="btn btn-secondary">LG</button>
+              <button type="button" onClick={this.props.filterItems} id="ALL BOW TIES" value='ALL' className="btn btn-light">ALL</button>
+              <button type="button" onClick={this.props.filterItems} id="SMALL BOW TIES" value='SM' className="btn btn-light">SM</button>
+              <button type="button" onClick={this.props.filterItems} id="LARGE BOW TIES" value='LG' className="btn btn-light">LG</button>
             </div>
             {/*<div class="input-group">
               <form>
