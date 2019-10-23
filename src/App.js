@@ -8,7 +8,7 @@ import ItemsContainer from './containers/ItemsContainer';
 import User from './components/User';
 import Login from './components/Login';
 import Footer from './components/Footer';
-import Cart from './components/CartContainer';
+import Cart from './containers/CartContainer';
 import Backdrop from './components/Backdrop';
 
 class App extends Component {

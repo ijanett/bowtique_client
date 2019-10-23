@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import CartItem from './CartItem';
+import CartItem from '../components/CartItem';
 
 class Cart extends Component {
 
