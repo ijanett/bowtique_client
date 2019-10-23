@@ -1,20 +1,29 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { cartCheckout } from '../actions/fetchUser'
 import { Link } from 'react-router-dom';
 import CartItem from '../components/CartItem';
 
 class Cart extends Component {
 
-    renderCartTotal = () => {
-        const total = this.props.carts[this.props.carts.length - 1].attributes.total
+    handleCheckout = (event) => {
+        event.preventDefault()
+        let cart = this.props.carts[this.props.carts.length - 1]
+        
+        this.props.cartCheckout(cart)
+    }
 
-        if (this.props.carts[this.props.carts.length - 1].attributes.items.length === 0) {
-            return <div className="text-center"><p>Your cart is empty</p></div>
+    renderCartTotal = () => {
+        const cart = this.props.carts[this.props.carts.length - 1]
+        const total = cart.attributes.total
+        console.log(cart)
+        if (cart.attributes.items.length === 0) {
+            return <div className="text-center" style={{margin: '20px'}}><p>Your cart is empty</p></div>
         } else {
             return (
                 <div className="cart-footer">
                 <div className="cart-total"><h5><strong>Total:</strong> {total}</h5></div><br/>
-                <div className="checkout-btn-container"><button className="checkout-btn">CHECKOUT</button></div></div>
+                <div className="checkout-btn-container"><button onClick={this.handleCheckout} className="checkout-btn">CHECKOUT</button></div></div>
             )
         }
     }
@@ -23,8 +32,6 @@ class Cart extends Component {
         console.log(this.props)
         const cart = this.props.carts[this.props.carts.length - 1];
         const cartItems = cart.attributes.items
-        // const cartItemIds = cart.relationships.cart_items.data
-        
 
         let itemsObj = {};
         cartItems.forEach(item => {
@@ -75,4 +82,4 @@ const mapStateToProps = state => {
     return { currentUser: state.userReducer.currentUser, carts: state.userReducer.carts.flat() }
 }
 
-export default connect(mapStateToProps)(Cart);
+export default connect(mapStateToProps, { cartCheckout })(Cart);
