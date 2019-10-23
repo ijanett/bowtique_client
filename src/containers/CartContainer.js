@@ -3,14 +3,20 @@ import { connect } from 'react-redux';
 import { cartCheckout } from '../actions/fetchUser'
 import { Link } from 'react-router-dom';
 import CartItem from '../components/CartItem';
+import swal from 'sweetalert';
+import { withRouter } from 'react-router-dom';
 
 class Cart extends Component {
 
     handleCheckout = (event) => {
         event.preventDefault()
         let cart = this.props.carts[this.props.carts.length - 1]
-        
-        this.props.cartCheckout(cart)
+        if (cart.attributes.checkout === false) {
+            this.props.cartCheckout(cart)
+            this.props.close()
+            swal({ title: "Thank you for shopping at Bowtique!", timer: 1700 })
+            this.props.history.push("/")
+        }
     }
 
     renderCartTotal = () => {
@@ -82,4 +88,4 @@ const mapStateToProps = state => {
     return { currentUser: state.userReducer.currentUser, carts: state.userReducer.carts.flat() }
 }
 
-export default connect(mapStateToProps, { cartCheckout })(Cart);
+export default withRouter(connect(mapStateToProps, { cartCheckout })(Cart));
