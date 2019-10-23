@@ -6,7 +6,7 @@ const User = (props) => {
     const carts = props.carts.filter(cart => 
         cart.attributes.checkout === true)
     
-    const orders = carts.map(order =>
+    const orders = carts.sort((a, b) => b.id - a.id).map(order =>
             <tr key={order.id}>
                 <td>{order.id}</td>
                 <td>{order.attributes.order_date}</td>
