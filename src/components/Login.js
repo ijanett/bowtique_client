@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import { fetchUser } from '../actions/fetchUser';
+import swal from 'sweetalert';
 
 class Login extends React.Component {
     state = {
@@ -29,8 +30,12 @@ class Login extends React.Component {
         //this.props.fetchUser(this.state)
         //3. Easiest way 
         //just pass it in as a destructeud object
-        this.props.fetchUser(this.state)
-        this.props.history.push("/bowties")
+        if(this.state.username === "" || this.state.password === "") {
+            swal({ title: "Form fields cannot be blank!", icon: "error", timer: 1700 })
+        } else {
+            this.props.fetchUser(this.state)
+            this.props.history.push("/bowties")
+        }
     }
 
     render() {
