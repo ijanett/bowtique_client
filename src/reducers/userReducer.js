@@ -22,6 +22,13 @@ const userReducer = (state = {
                 currentUser: action.user.data,
                 carts: [action.user.included]
             }
+
+        case 'CART_CHECKOUT':
+            return {
+                ...state,
+                currentUser: action.user.data,
+                carts: [action.user.included]
+            }
         
         default:
             return state;

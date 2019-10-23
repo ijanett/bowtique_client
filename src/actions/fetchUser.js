@@ -1,5 +1,7 @@
-const USERS_URL = "http://localhost:3000/users"
-const CART_ITEMS_URL = "http://localhost:3000/cart_items"
+const BASE_URL = "http://localhost:3000"
+const USERS_URL = BASE_URL + "/users"
+const CART_ITEMS_URL = BASE_URL + "/cart_items"
+const CARTS_URL = BASE_URL + "/carts"
 
 //if you're using THUNK, your actionCreator will receive dispatch TWO TIMES
 //the MAIN PURPOSE OF THUNK IS TO PUT YOUR ASYNC LOGIC INTO YOUR ACTION CREATORS
@@ -59,5 +61,21 @@ export const deleteCartItem = (cartItem) => {
         fetch(CART_ITEMS_URL + `/${cartItem.id}`, configObj)
             .then(res => res.json())
             .then(user => dispatch({ type: 'DELETE_CART_ITEM', user }))
+    }
+}
+
+export const cartCheckout = (cart) => {
+    return (dispatch) => {
+        const configObj = {
+            method: 'PATCH',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(cart)
+        }
+        fetch(CARTS_URL + `/${cart.id}`, configObj)
+            .then(res => res.json())
+            .then(user => dispatch({ type: 'CART_CHECKOUT', user }))
     }
 }
