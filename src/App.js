@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
 import './App.css';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import NavbarContainer from './containers/NavbarContainer';
 import Home from './components/Home';
 import ItemsContainer from './containers/ItemsContainer';
 import User from './components/User';
@@ -43,16 +43,14 @@ class App extends Component {
     return (
       <Router>
           <div style={{height: '100%'}}>
-            <Navbar cartToggle={this.cartToggleHandler} currentUser={this.props.currentUser} carts={this.props.carts} openCart={this.w3_open} />
+            <NavbarContainer cartToggle={this.cartToggleHandler} openCart={this.w3_open} />
             <Cart visible={this.state.cartVisible} close={this.cartToggleHandler} />
               {backdrop}
               <main style={{marginTop: '34px'}}>
-                <Switch>
-                  <Route exact path="/" component={Home} />
-                  <Route exact path="/login" component={Login} />
-                  <Route path="/bowties" render={(props) => <ItemsContainer {...props} currentUser={this.props.currentUser} filterItems={this.filterItems} filter={this.state.filter} filterTitle={this.state.filterTitle} />} />
-                  <Route path="/account" render={(props) => <User {...props} currentUser={this.props.currentUser} carts={this.props.carts} />} />
-                </Switch>
+                <Route exact path="/" component={Home} />
+                <Route path="/login" component={Login} />
+                <Route path="/bowties" render={(props) => <ItemsContainer {...props} currentUser={this.props.currentUser} filterItems={this.filterItems} filter={this.state.filter} filterTitle={this.state.filterTitle} />} />
+                <Route path="/account" render={(props) => <User {...props} currentUser={this.props.currentUser} carts={this.props.carts} />} />
               </main>
             <Footer />
           </div>
