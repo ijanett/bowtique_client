@@ -5,7 +5,6 @@ import Item from '../components/Item'
 
 class ItemsContainer extends Component {
     componentDidMount(){
-        console.log("MOUNTING")
         this.props.fetchItems()
     }
 

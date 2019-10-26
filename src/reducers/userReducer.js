@@ -29,7 +29,7 @@ const userReducer = (state = {
                 currentUser: action.user.data,
                 carts: [action.user.included]
             }
-        
+
         default:
             return state;
     }

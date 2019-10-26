@@ -35,10 +35,9 @@ class Cart extends Component {
     }
 
     renderCartItems = () => {
-        console.log(this.props)
         const cart = this.props.carts[this.props.carts.length - 1];
         const cartItems = cart.attributes.items
-
+    
         let itemsObj = {};
         cartItems.forEach(item => {
             if(!itemsObj[item.id]) {
@@ -56,14 +55,10 @@ class Cart extends Component {
             items.push(<CartItem currentUser={this.props.currentUser} key={item.id} cart_id={cart.id} id={item.id} img={item.image} name={item.name} price={item.price} size={item.size} quantity={itemsObj[cartItem].length} total={total} />)
         }
 
-        console.log(itemsObj)
-        console.log(items)
-
         return items
     }
 
     render() {
-        console.log(this.props)
         let cartClass = 'side-drawer';
         if (this.props.visible) {
             cartClass = 'side-drawer open';

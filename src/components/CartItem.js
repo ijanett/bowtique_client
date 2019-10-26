@@ -7,16 +7,14 @@ class CartItem extends Component {
         event.preventDefault()
 
         let cart_item = this.props.currentUser.attributes.cart_items.find(cartItem =>
-            (cartItem.cart_id === parseInt(this.props.cart_id, 10) && cartItem.item_id === this.props.id)
+            (cartItem.cart_id === parseInt(event.target.dataset.cartId, 10) && cartItem.item_id === parseInt(event.target.dataset.itemId, 10))
         )
     
         this.props.deleteCartItem(cart_item)
     }
 
     renderCartItem = () => {
-        // debugger
-        console.log(this.props)
-        return <li >
+        return <li>
                     <div><img className="img-fluid" src={this.props.img} alt={this.props.name}></img>
                     <div className="item-info">{this.props.name}: {this.props.size}
                     <br/><b>QTY:</b> {this.props.quantity}

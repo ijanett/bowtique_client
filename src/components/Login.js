@@ -30,6 +30,7 @@ class Login extends React.Component {
         //this.props.fetchUser(this.state)
         //3. Easiest way 
         //just pass it in as a destructeud object
+       
         if(this.state.username === "" || this.state.password === "") {
             swal({ title: "Form fields cannot be blank!", icon: "error", timer: 1700 })
         } else {
