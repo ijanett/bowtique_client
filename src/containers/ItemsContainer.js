@@ -77,7 +77,10 @@ class ItemsContainer extends Component {
 // }
 
 const mapStateToProps = state => {
-  return { items: state.itemsReducer.items }
+  return {
+    items: state.itemsReducer.items,
+    currentUser: state.userReducer.currentUser
+  }
 }
 
 export default connect(mapStateToProps, { fetchItems })(ItemsContainer); 
