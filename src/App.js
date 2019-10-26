@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux'
 import './App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import NavbarContainer from './containers/NavbarContainer';
 import Home from './components/Home';
 import ItemsContainer from './containers/ItemsContainer';
-import User from './components/User';
+import UserContainer from './containers/UserContainer';
 import Login from './components/Login';
 import Footer from './components/Footer';
 import Cart from './containers/CartContainer';
@@ -49,8 +48,8 @@ class App extends Component {
               <main style={{marginTop: '34px'}}>
                 <Route exact path="/" component={Home} />
                 <Route path="/login" component={Login} />
-                <Route path="/bowties" render={(props) => <ItemsContainer {...props} currentUser={this.props.currentUser} filterItems={this.filterItems} filter={this.state.filter} filterTitle={this.state.filterTitle} />} />
-                <Route path="/account" render={(props) => <User {...props} currentUser={this.props.currentUser} carts={this.props.carts} />} />
+                <Route path="/bowties" render={(props) => <ItemsContainer {...props} filterItems={this.filterItems} filter={this.state.filter} filterTitle={this.state.filterTitle} />} />
+                <Route path="/account" component={UserContainer} />
               </main>
             <Footer />
           </div>
@@ -59,11 +58,5 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    currentUser: state.userReducer.currentUser,
-    carts: state.userReducer.carts.flat()
-  }
-}
 
-export default connect(mapStateToProps)(App);
+export default App;
