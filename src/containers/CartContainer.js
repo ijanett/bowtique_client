@@ -22,7 +22,7 @@ class Cart extends Component {
     renderCartTotal = () => {
         const cart = this.props.carts[this.props.carts.length - 1]
         const total = cart.attributes.total
-        console.log(cart)
+
         if (cart.attributes.items.length === 0) {
             return <div className="text-center" style={{margin: '20px'}}><p>Your cart is empty</p></div>
         } else {
