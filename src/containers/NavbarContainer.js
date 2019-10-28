@@ -5,8 +5,8 @@ import { withRouter } from 'react-router-dom';
 
 class NavbarContainer extends Component {
     logout = () => {
-        window.location.reload()
         this.props.history.push("/login")
+        window.location.reload()
     }
 
     render() {
