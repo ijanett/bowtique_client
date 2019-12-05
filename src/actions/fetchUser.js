@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:3000"
+const BASE_URL = "https://bowtique-api.herokuapp.com"
 const USERS_URL = BASE_URL + "/users"
 const CART_ITEMS_URL = BASE_URL + "/cart_items"
 const CARTS_URL = BASE_URL + "/carts"

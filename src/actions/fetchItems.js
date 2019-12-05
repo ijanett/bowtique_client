@@ -1,4 +1,4 @@
-const ITEMS_URL = "http://localhost:3000/items"
+const ITEMS_URL = "https://bowtique-api.herokuapp.com/items"
 
 export const fetchItems = () => {
     return (dispatch) => {
