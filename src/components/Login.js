@@ -44,10 +44,10 @@ class Login extends React.Component {
         return (
             <div className="text-center">
                 <div className="login-container">
-                    <h3>LOGIN FORM</h3>
+                    <h4>LOGIN FORM</h4>
                     <br />
                     <form>
-                        USERNAME: <input onChange={this.handleChange} type="text" name="username" value={this.state.username}/>
+                        <input onChange={this.handleChange} type="text" name="username" value={this.state.username} placeholder="Username" />
                         <br />
                         <br />
                         <input onClick={this.handleSubmit} type="submit" value="Login" />
