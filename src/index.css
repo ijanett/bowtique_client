@@ -235,16 +235,16 @@ overflow: scroll;
 
 .login-container form {
   border: 2px solid #0e204d;
-  padding: 50px 24px;
-  width: 440px;
-  height: 260px;
-  margin: 0 auto;
+  padding: 80px 43px;
+  width: 420px;
+  height: 250px;
+  margin: 5% auto;
   max-width: 90%;
 }
 
 .login-container input[type=submit] {
   display: inline-block;
-  margin-top: 10%;
+  margin-top: 5%;
 }
 
 /* HOME */
