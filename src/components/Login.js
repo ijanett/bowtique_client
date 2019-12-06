@@ -5,8 +5,7 @@ import swal from 'sweetalert';
 
 class Login extends React.Component {
     state = {
-        username: '',
-        password: ''
+        username: ''
     }
 
     handleChange = event => {
@@ -31,7 +30,7 @@ class Login extends React.Component {
         //3. Easiest way 
         //just pass it in as a destructeud object
        
-        if(this.state.username === "" || this.state.password === "") {
+        if(this.state.username === "") {
             swal({ title: "Form fields cannot be blank!", icon: "error", timer: 1700 })
         } else {
             this.props.fetchUser(this.state)
@@ -50,8 +49,6 @@ class Login extends React.Component {
                     <form>
                         USERNAME: <input onChange={this.handleChange} type="text" name="username" value={this.state.username}/>
                         <br />
-                        <br />
-                        PASSWORD: <input onChange={this.handleChange} type="password" name="password" vlaue={this.state.password}/>
                         <br />
                         <input onClick={this.handleSubmit} type="submit" value="Login" />
                     </form>
