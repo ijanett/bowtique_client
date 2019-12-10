@@ -53,7 +53,7 @@ class Item extends Component {
 
     renderItem = () => {
         return  <div className="col-sm-3" key={this.props.key}>
-                    <img src={this.props.img} alt={this.props.name} className="img-fluid"></img>
+                    <img src={this.props.img} alt={this.props.name} className="img-fluid" />
                     <h5 align="center">{this.props.name}</h5>
                     <h6 align="center">${this.props.price}.00</h6>
                     <h6 align="center">Size: {this.props.size}</h6>
