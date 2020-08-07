@@ -1,4 +1,4 @@
-![Bowtique](https://drive.google.com/uc?export=view&id=1DerDD3dk8jhXISxFuDFzp9FFiVybX7Pb)
+<img src="https://drive.google.com/uc?export=view&id=1DerDD3dk8jhXISxFuDFzp9FFiVybX7Pb" width=500 height=500>
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
