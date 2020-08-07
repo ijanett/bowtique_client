@@ -1,4 +1,4 @@
-![Bowtique](https://drive.google.com/file/d/1DerDD3dk8jhXISxFuDFzp9FFiVybX7Pb/view?usp=sharing)
+![Bowtique](https://drive.google.com/uc?export=view&id=1DerDD3dk8jhXISxFuDFzp9FFiVybX7Pb)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
